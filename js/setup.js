@@ -12,8 +12,9 @@ var NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Крис�
 var LAST_NAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)]'];
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
+var wizards = [];
 
-function getRandomName() {
+function getFullName() {
   return NAMES[Math.round(Math.random() * ((NAMES.length - 1) - 0) + 0)] + ' ' + LAST_NAMES[Math.round(Math.random() * ((LAST_NAMES.length - 1) - 0) + 0)];
 }
 
@@ -25,28 +26,15 @@ function getRandomEyes() {
   return EYES_COLOR[Math.round(Math.random() * ((EYES_COLOR.length - 1) - 0) + 0)];
 }
 
-var wizards = [
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoat(),
-    eyesColor: getRandomEyes()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoat(),
-    eyesColor: getRandomEyes()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoat(),
-    eyesColor: getRandomEyes()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoat(),
-    eyesColor: getRandomEyes()
+function createWizardArr(count, arr) {
+  for (var i = 0; i < count; i++) {
+    arr.push(
+        {name: getFullName(),
+          coatColor: getRandomCoat(),
+          eyesColor: getRandomEyes()});
   }
-];
+}
+createWizardArr(4, wizards);
 
 for (var i = 0; i < wizards.length; i++) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
